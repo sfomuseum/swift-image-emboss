@@ -38,6 +38,7 @@ public struct ImageEmboss {
         var images: [NSImage] = []
         
             do {
+                
                 let buf = try results.generateMaskedImage(
                     ofInstances: results.allInstances,
                     from: handler,

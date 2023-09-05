@@ -1,5 +1,5 @@
 import XCTest
-@testable import swift_image_emboss
+@testable import ImageEmboss
 
 final class swift_image_embossTests: XCTestCase {
     func testExample() throws {
