@@ -1,4 +1,4 @@
-import Foundation
+AAimport Foundation
 import CoreImage
 import Vision
 import AppKit
@@ -29,7 +29,7 @@ public struct ImageEmboss {
         guard let results = req.results!.first else {
             return .failure(Errors.noResults)
         }
-                    
+        
         if combined {
             return self.extractImagesCombined(handler: handler, results: results)
         }
@@ -40,16 +40,12 @@ public struct ImageEmboss {
     private func extractImages(handler: VNImageRequestHandler, results: VNInstanceMaskObservation) -> Result<[NSImage], Error>  {
         
         var images: [NSImage] = []
-        var i = 0
-        
+        var i = 1
+                
         for _ in results.allInstances {
-        
+                    
             defer {
                 i += 1
-            }
-            
-            if i == 0 {
-                continue
             }
             
             do {
