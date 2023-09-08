@@ -20,3 +20,4 @@ This requires MacOS 14.0 or higher.
 ## See also
 
 * https://developer.apple.com/documentation/vision
+* https://github.com/sfomuseum/swift-image-emboss-cli
