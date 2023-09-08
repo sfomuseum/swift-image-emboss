@@ -1,4 +1,4 @@
-AAimport Foundation
+import Foundation
 import CoreImage
 import Vision
 import AppKit
@@ -8,7 +8,7 @@ public enum Errors: Error {
     case ciImage
 }
 
-@available(macOS 14.0, *)
+@available(macOS 14.0, iOS 17.0, visionOS 1.0, *)
 public struct ImageEmboss {
 
     let req = VNGenerateForegroundInstanceMaskRequest()
