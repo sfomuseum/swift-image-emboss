@@ -3,12 +3,9 @@ import CoreImage
 import Vision
 import AppKit
 
-public enum Errors: Error {
-    case noResults
-    case ciImage
-}
 
-@available(macOS 14.0, iOS 17.0, visionOS 1.0, *)
+#if os(macOS)
+@available(macOS 14.0, visionOS 1.0, *)
 public struct ImageEmboss {
 
     let req = VNGenerateForegroundInstanceMaskRequest()
@@ -126,3 +123,4 @@ public struct ImageEmboss {
         return .success(nsImage)
     }
 }
+#endif
