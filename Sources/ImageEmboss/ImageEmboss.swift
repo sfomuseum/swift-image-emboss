@@ -1,10 +1,9 @@
-#if canImport(UIKit)
 import Foundation
 import CoreImage
 import Vision
-import UIKit
+import Cocoa
 
-@available(iOS 17.0, visionOS 1.0, *)
+@available(macOS 14.0, iOS 17.0, tvOS 17.0, *)
 public struct ImageEmboss {
 
     let req = VNGenerateForegroundInstanceMaskRequest()
@@ -12,7 +11,7 @@ public struct ImageEmboss {
     public init() {
     }
     
-    public func ProcessImage(image: CGImage, combined: Bool) -> Result<[UIImage], Error> {
+    public func ProcessImage(image: CGImage, combined: Bool) -> Result<[NSImage], Error> {
                 
         let handler = VNImageRequestHandler(cgImage: image, options: [:])
 
@@ -33,7 +32,7 @@ public struct ImageEmboss {
         return self.extractImages(handler: handler, results: results)
     }
     
-    private func extractImages(handler: VNImageRequestHandler, results: VNInstanceMaskObservation) -> Result<[UIImage], Error>  {
+    private func extractImages(handler: VNImageRequestHandler, results: VNInstanceMaskObservation) -> Result<[NSImage], Error>  {
         
         var images: [NSImage] = []
         var i = 1
@@ -72,7 +71,7 @@ public struct ImageEmboss {
         return .success(images)
     }
     
-    private func extractImagesCombined(handler: VNImageRequestHandler, results: VNInstanceMaskObservation) -> Result<[UIImage], Error>  {
+    private func extractImagesCombined(handler: VNImageRequestHandler, results: VNInstanceMaskObservation) -> Result<[NSImage], Error>  {
         
         var images: [NSImage] = []
         
@@ -105,7 +104,7 @@ public struct ImageEmboss {
     
     // https://developer.apple.com/documentation/corevideo/cvpixelbuffer
 
-    private func bufToImage(buf: CVPixelBuffer) -> Result<UIImage, Error> {
+    private func bufToImage(buf: CVPixelBuffer) -> Result<NSImage, Error> {
         
         let ciImage = CIImage(cvImageBuffer: buf)
 
@@ -118,8 +117,7 @@ public struct ImageEmboss {
             return .failure(Errors.ciImage)
         }
 
-        let nsImage = UIImage(cgImage: cgImage, size: CGSize(width: width, height: height))
+        let nsImage = NSImage(cgImage: cgImage, size: CGSize(width: width, height: height))
         return .success(nsImage)
     }
 }
-#endif
