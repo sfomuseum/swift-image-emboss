@@ -1,10 +1,9 @@
+#if os(macOS)
 import Foundation
 import CoreImage
 import Vision
 import AppKit
 
-
-#if os(macOS)
 @available(macOS 14.0, visionOS 1.0, *)
 public struct ImageEmboss {
 

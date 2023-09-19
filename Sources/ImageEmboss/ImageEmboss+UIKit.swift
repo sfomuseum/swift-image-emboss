@@ -1,9 +1,9 @@
+#if canImport(UIKit)
 import Foundation
 import CoreImage
 import Vision
-// import UIKit
+import UIKit
 
-// #if os(iOS)
 @available(iOS 17.0, visionOS 1.0, *)
 public struct ImageEmboss {
 
@@ -122,4 +122,4 @@ public struct ImageEmboss {
         return .success(nsImage)
     }
 }
-// #endif
+#endif
