@@ -1,7 +1,6 @@
 import Foundation
 import CoreImage
 import Vision
-import Cocoa
 
 @available(macOS 14.0, iOS 17.0, tvOS 17.0, *)
 public struct ImageEmboss {
@@ -11,7 +10,7 @@ public struct ImageEmboss {
     public init() {
     }
     
-    public func ProcessImage(image: CGImage, combined: Bool) -> Result<[NSImage], Error> {
+    public func ProcessImage(image: CGImage, combined: Bool) -> Result<[CGImage], Error> {
                 
         let handler = VNImageRequestHandler(cgImage: image, options: [:])
 
@@ -32,9 +31,9 @@ public struct ImageEmboss {
         return self.extractImages(handler: handler, results: results)
     }
     
-    private func extractImages(handler: VNImageRequestHandler, results: VNInstanceMaskObservation) -> Result<[NSImage], Error>  {
+    private func extractImages(handler: VNImageRequestHandler, results: VNInstanceMaskObservation) -> Result<[CGImage], Error>  {
         
-        var images: [NSImage] = []
+        var images: [CGImage] = []
         var i = 1
                 
         for _ in results.allInstances {
@@ -52,7 +51,7 @@ public struct ImageEmboss {
                 )
                 
                 let im_rsp = self.bufToImage(buf: buf)
-                var im: NSImage
+                var im: CGImage
                 
                 switch im_rsp {
                 case .failure(let error):
@@ -71,9 +70,9 @@ public struct ImageEmboss {
         return .success(images)
     }
     
-    private func extractImagesCombined(handler: VNImageRequestHandler, results: VNInstanceMaskObservation) -> Result<[NSImage], Error>  {
+    private func extractImagesCombined(handler: VNImageRequestHandler, results: VNInstanceMaskObservation) -> Result<[CGImage], Error>  {
         
-        var images: [NSImage] = []
+        var images: [CGImage] = []
         
             do {
                 
@@ -84,7 +83,7 @@ public struct ImageEmboss {
                 )
                        
                 let im_rsp = self.bufToImage(buf: buf)
-                var im: NSImage
+                var im: CGImage
                 
                 switch im_rsp {
                 case .failure(let error):
@@ -104,7 +103,7 @@ public struct ImageEmboss {
     
     // https://developer.apple.com/documentation/corevideo/cvpixelbuffer
 
-    private func bufToImage(buf: CVPixelBuffer) -> Result<NSImage, Error> {
+    private func bufToImage(buf: CVPixelBuffer) -> Result<CGImage, Error> {
         
         let ciImage = CIImage(cvImageBuffer: buf)
 
@@ -117,7 +116,7 @@ public struct ImageEmboss {
             return .failure(Errors.ciImage)
         }
 
-        let nsImage = NSImage(cgImage: cgImage, size: CGSize(width: width, height: height))
-        return .success(nsImage)
+        // let nsImage = NSImage(cgImage: cgImage, size: CGSize(width: width, height: height))
+        return .success(cgImage)
     }
 }
