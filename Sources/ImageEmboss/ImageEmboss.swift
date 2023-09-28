@@ -116,7 +116,6 @@ public struct ImageEmboss {
             return .failure(Errors.ciImage)
         }
 
-        // let nsImage = NSImage(cgImage: cgImage, size: CGSize(width: width, height: height))
         return .success(cgImage)
     }
 }

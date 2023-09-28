@@ -15,7 +15,7 @@ let rsp = em.ProcessImage(image: cgImage)
 
 ## Requirements
 
-This requires MacOS 14.0 or higher.
+This requires MacOS 14.0, iOS 17.0, tvOS 17.0 or higher.
 
 ## See also
 
