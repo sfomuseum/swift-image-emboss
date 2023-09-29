@@ -12,7 +12,7 @@ Documentation is incomplete at this time.
 var ciImage: CIImage
 
 let em = ImageEmboss()
-let rsp = em.ProcessImage(image: ciImage)
+let rsp = em.ProcessImage(image: ciImage, combined: false)
 ```
 
 ## Requirements
@@ -22,4 +22,5 @@ This requires MacOS 14.0, iOS 17.0, tvOS 17.0 or higher.
 ## See also
 
 * https://developer.apple.com/documentation/vision
+* https://developer.apple.com/documentation/coreimage/ciimage
 * https://github.com/sfomuseum/swift-image-emboss-cli
