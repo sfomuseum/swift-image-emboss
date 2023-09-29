@@ -9,8 +9,10 @@ Documentation is incomplete at this time.
 ## Example
 
 ```
+var ciImage: CIImage
+
 let em = ImageEmboss()
-let rsp = em.ProcessImage(image: cgImage)
+let rsp = em.ProcessImage(image: ciImage)
 ```
 
 ## Requirements
