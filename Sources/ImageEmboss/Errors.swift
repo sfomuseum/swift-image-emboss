@@ -1,4 +1,4 @@
-public enum Errors: Error {
+public enum ImageEmbossErrors: Error {
     case noResults
     case ciImage
 }

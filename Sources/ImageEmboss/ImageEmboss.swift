@@ -21,7 +21,8 @@ public struct ImageEmboss {
         }
                 
         guard let results = req.results!.first else {
-            return .failure(Errors.noResults)
+            // return .failure(ImageEmbossErrors.noResults)
+            return .success([CIImage]())
         }
         
         if combined {
